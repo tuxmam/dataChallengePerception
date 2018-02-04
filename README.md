@@ -1,3 +1,10 @@
+
+This is a fork of : https://github.com/Stephlat/dataChallengePerception repository.
+
+Data is soposed to be in a folder "data" at the root of the reposotory
+
+
+
 # Data Challenge organized by Inria-Perception
 
 This repository contains the basic scripts that are provided for the challenge. The goal is to develop an audio-visual diarization model. 
