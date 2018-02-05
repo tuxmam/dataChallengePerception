@@ -19,8 +19,8 @@ path=sys.argv[1]
 idx=1
 cap = cv2.VideoCapture(path+"/video.avi")
 capssl = cv2.VideoCapture(path+"/ssl.avi")
-numberFrame=int(cap.get(cv2.cv.CV_CAP_PROP_FRAME_COUNT))
-frameShape=(int(cap.get(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT)),int(cap.get(cv2.cv.CV_CAP_PROP_FRAME_WIDTH)))
+numberFrame=int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+frameShape=(int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)),int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)))
 
 #We create a dictionary for each frame containing the pose and the ssl
 framesDic=[{'det':[]} for n in range(numberFrame)]
@@ -57,12 +57,13 @@ while True:
     matdisp=cv2.addWeighted(frame, 0.7, sslDisplay, 0.3, 0)
 
     # we display the poses
-    for nbDet,det in enumerate(framesDic[idxFrame]['det']):
+    for nbDet,detm in enumerate(framesDic[idxFrame]['det']):
+        det = list(detm)
         for pt in range(0,35,2):
             yi=det[pt]
             xi=det[pt+1]
             if xi>0 and yi>0:
-                cv2.circle(matdisp, (yi, xi), 2, colors[pt/2], 2)
+                cv2.circle(matdisp, (yi, xi), 2, colors[int(pt/2)], 2)
 
 
     cv2.imshow('Observations',matdisp)
