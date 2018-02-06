@@ -1,6 +1,6 @@
 import numpy as np
 from munkres import Munkres, print_matrix
-from utils import euclidean_pose_distance, cost_matrix
+from metric.utils import euclidean_pose_distance, cost_matrix
 
 
 ''' Compute CLEAR metrics for multi pose tracking as in Stiefelhagen R., Bernardin K., Bowers R., Garofolo J., Mostefa D., Soundararajan P. (2007) The CLEAR 2006 Evaluation, and SA (speaking activity accuracy)
@@ -144,16 +144,16 @@ def compute_clear(obs, hyp, Thr, d = euclidean_pose_distance):
 
 if __name__ == '__main__':
     import sys
-    from read_file import read_file
+    from ..metric.read_file import read_file
     from numpy.random import normal
     
     if len(sys.argv) != 3:
         raise Exception('wrong input files : should be \'python compute_clear.py #GT_file #HYPOTHESIS_file\'')
 
     # Reading input files
-    print 'reading GT file'
+    print('reading GT file')
     obs_file = str(sys.argv[1])
-    print 'reading result file'
+    print('reading result file')
     hyp_file = str(sys.argv[2])
     obs = read_file(obs_file)
     hyp = read_file(hyp_file)
@@ -169,11 +169,11 @@ if __name__ == '__main__':
     #hyp[:,2:] = hyp[:,2:] + noise
     #hyp[:,1] = np.array(noise[:,0], int) + hyp[:,1]
     MOTA, MOTP,SA,MOTSA = (compute_clear(obs, hyp, 25))
-    print 'MOTA'
-    print MOTA
-    print 'MOTP'
-    print MOTP
-    print 'SA'
-    print SA
-    print 'MOTSA'
-    print MOTSA
+    print('MOTA')
+    print(MOTA)
+    print('MOTP')
+    print(MOTP)
+    print('SA')
+    print(SA)
+    print('MOTSA')
+    print(MOTSA)
