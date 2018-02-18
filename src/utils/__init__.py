@@ -4,3 +4,4 @@ from iter_frame import iter_frame
 from labels import Labels
 from barycenter import body_barycenter, head_barycenter
 from Point import Point
+from Corp import Corp

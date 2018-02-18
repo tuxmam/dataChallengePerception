@@ -1,5 +1,6 @@
 # coding=utf-8
 import numpy as np
+from iter_frame import clean_lines
 
 
 def make_pred(data, fonction):
@@ -11,6 +12,7 @@ def make_pred(data, fonction):
     :return:
     """
     res = []
-    for line, (identite, speak) in zip(data, fonction(data)):
+    for line, (identite, speak) in zip(clean_lines(data), fonction(data)):
         res.append(np.concatenate((line[0:1], [identite], [speak], line[1:37])))
     return np.array(res)
+
