@@ -43,6 +43,16 @@ class Labels(IntEnum):
     X_REAR = 35
     Y_REAR = 36
 
+    X_BARY_HD = 37
+    Y_BARY_HD = 38
+    X_BARY_BD = 39
+    Y_BARY_BD = 40
+    NB_PT_CACHE = 41
+
+    COL_R = 42
+    COL_G = 43
+    COL_B = 44
+
 
 def head_labels():
     """
