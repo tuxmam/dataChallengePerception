@@ -1,6 +1,7 @@
 # coding=utf-8
 import numpy as np
 from iter_frame import clean_lines
+from metric.read_file import read_file
 
 
 def make_pred(data, fonction):
@@ -16,3 +17,34 @@ def make_pred(data, fonction):
         res.append(np.concatenate((line[0:1], [identite], [speak], line[1:37])))
     return np.array(res)
 
+
+def make_mult_pred(ite_data, function):
+    for data in ite_data:
+        yield make_pred(data, function)
+
+
+def mult_load(ite_path):
+    """
+    renvoie un itérateur contenant les donée chargée : des tuple, (data_ref, data_exp)
+    :param ite_path:
+    :return:
+    """
+    data = []
+    data_ref = []
+    for path in ite_path:
+        data_ref.append(read_file(path+"groundTruth.txt"))
+        data.append(np.loadtxt(path+"augmented_data.txt"))
+    return np.array(data_ref), np.array(data)
+
+def make_mult_eval(ite_data, function):
+    """
+    renvoie les resultas sur les donnée formatée
+    :param ite_data:
+    :param function:
+    :return:
+    """
+    res = [0,0,0,0]
+    for data in ite_data:
+        res[0], res[1], res[2], res[3] = make_pred(data, function)
+    n = len(tab_data)
+    return res[0] / n, res[1] / n, res[2] / n, res[3] /n
