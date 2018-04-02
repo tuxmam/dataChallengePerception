@@ -39,7 +39,7 @@ def add_col(data, path):
             ligne += 1
         while ligne<len(data) and i == data[ligne][0]:
             cp = Corp(data[ligne])
-            r, g, b = col_extraction(image, cp.bd_bary, 15)
+            r, g, b = col_extraction(image, cp.bd_bary, 30)
             data_traite.append(np.concatenate((data[ligne], [r, g, b])))
             ligne += 1
         i += 1
