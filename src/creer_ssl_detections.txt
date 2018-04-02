@@ -1,0 +1,1 @@
+python detecte_contours_ssl.py "chemin du dossier contenant la video
