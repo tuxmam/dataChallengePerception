@@ -33,19 +33,20 @@ for idx,line in enumerate(lines):
     idxFrame = int(elements[0])-1
     framesDic[idxFrame]['det'].append(map(lambda x: int(float(x)), elements[1:]))
 
-idxFrame=0    
+idxFrame=0
 while True:
     ret2, frameSSL = capssl.read()
+    #print("type de la frame ",type(frameSSL))
     if (not ret2):
         end=True
         break
-    
+
     ssl=cv2.resize(frameSSL,(frameShape[1],frameShape[0]), interpolation=cv2.INTER_CUBIC)
     framesDic[idxFrame]['ssl']=ssl
     idxFrame+=1
 
-    
-idxFrame=0    
+
+idxFrame=0
 while True:
     ret, frame = cap.read()
     if (not ret) or 'ssl' not in framesDic[idxFrame]:
