@@ -9,6 +9,13 @@ from labels import Labels
 
 
 def pretraitement(path):
+    """
+    ajoute a un fichier detection (dans le dossier path) des collones suplémentaire
+    bary_hd.x bary_hd.y, bary_bd_x, bary_bd_y, nb_pt_caché, colR, colG, colB
+    et le sauvegarde sous le noms augmented_data.
+    :param path:
+    :return:
+    """
     row_data = np.loadtxt(path + "detections.txt")
     data_passe1 = []
 

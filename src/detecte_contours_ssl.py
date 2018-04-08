@@ -18,9 +18,9 @@ import imageio
 #import imutils
 
 perimetre= lambda cnt: cv2.arcLength(cnt,True)
+
 def epure_contours(contours,alpha,logfile):
     """epure la liste des contours pour n'afficher que les contours les plus significatif 
-<<<<<<< HEAD
     l'unité de mesure ici est le périmètre d'un contour """
     contours=sorted(contours ,key=lambda contour :-cv2.arcLength(contour,True))
     #apres cette étape les contours sot classés par ordre decroissant de surface 
@@ -35,7 +35,7 @@ def epure_contours(contours,alpha,logfile):
             break
     return contours
     
-def detecte_voix_frame_1(num_frame,frameSSL,logfile,epure=False,debug=False):
+def detecte_voix_frame_1(num_frame,frameSSL,logfile, path, epure=False,debug=False):
     """ detecte la voix dans une frameSSL correspondant au fait
     qu'une seule personne parle """
     #l'option debug permet d'afficher les images thresholdé des frames ayan plusieurs contours
@@ -99,7 +99,7 @@ def detecte_voix_1(path):
             #modifier cette partie pour le cas ou plusieurs personnes parle donc plusieurs intensité lumineuse 
         #y,x=detection_max_intensite(frameSSL)[0:2]
 
-        centre_contours=detecte_voix_frame_1(num_frame,frameSSL,logfile,epure=False)
+        centre_contours=detecte_voix_frame_1(num_frame,frameSSL,logfile, path,epure=False)
         n=len(centre_contours)
         for i in range(n):
             y,x=centre_contours[i]
@@ -111,11 +111,13 @@ def detecte_voix_1(path):
     detection_ssl.close()
     logfile.close()
     return x,y
-path=sys.argv[1]
-detecte_voix_1(path)
 
-        
-        
+
+# path=sys.argv[1]
+# detecte_voix_1(path)
+
+
+
 
                 
                 
