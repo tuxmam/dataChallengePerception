@@ -7,3 +7,5 @@ from Point import Point
 from Corp import CorpCol, Corp
 from Identity import Identity
 from pretraitement import pretraitement, add_col
+from mixture import make_mixture, compare_corp_son
+from compure_error import compute_error

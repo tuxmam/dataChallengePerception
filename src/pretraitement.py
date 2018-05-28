@@ -7,7 +7,7 @@ import os
 fait le pretraitement de toute les video
 """
 
-PATH = "../data/"
+PATH = "../test/"
 for vid in os.listdir(PATH):
     print("traitement de : " + vid)
     detecte_voix_1(PATH + vid + "/")

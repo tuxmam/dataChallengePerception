@@ -9,13 +9,17 @@ import cv2
 from random import randint
 import scipy.io
 
+path=sys.argv[1]
+
+
+
+
 colors = [[255, 0, 0], [255, 85, 0], [255, 170, 0], [255, 255, 0], [170, 255, 0], [85, 255, 0], [0, 255, 0],
           [0, 255, 85], [0, 255, 170], [0, 255, 255], [0, 170, 255], [0, 85, 255], [0, 0, 255], [85, 0, 255],
           [170, 0, 255], [255, 0, 255], [255, 0, 170], [255, 0, 85]]
 
 
 
-path=sys.argv[1]
 idx=1
 cap = cv2.VideoCapture(path+"/video.avi")
 capssl = cv2.VideoCapture(path+"/ssl.avi")
@@ -47,6 +51,7 @@ while True:
 
 
 idxFrame=0
+k =0
 while True:
     ret, frame = cap.read()
     if (not ret) or 'ssl' not in framesDic[idxFrame]:

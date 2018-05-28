@@ -29,7 +29,7 @@ def make_mult_pred(ite_data, function):
         yield make_pred(data, function)
 
 
-def mult_load(ite_path, son = False):
+def mult_load(ite_path, son = False, ficher_son="ssl_detection.txt"):
     """
     renvoie un itérateur contenant les donée chargée : des tuple, (data_ref, data_exp)
     si son = true renvoie : ((data_pos, data_son), data_exp)
@@ -41,7 +41,7 @@ def mult_load(ite_path, son = False):
     for path in ite_path:
         data_ref.append(read_file(path+"groundTruth.txt"))
         if son:
-            data.append((np.loadtxt(path+"augmented_data.txt"), np.loadtxt(path+"ssl_detections.txt")))
+            data.append((np.loadtxt(path+"augmented_data.txt"), np.loadtxt(path+ficher_son)))
         else:
             data.append(np.loadtxt(path+"augmented_data.txt"))
     return np.array(data_ref), np.array(data)
